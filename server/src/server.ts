@@ -1,17 +1,27 @@
 import * as dotenv from "dotenv";
-import express, { Express } from "express";
+import express, { Express, Request } from "express";
 import bodyParser from "body-parser";
+import cors from "cors";
 import noteRoutes from "./routes/note.routes.js";
 
 dotenv.config();
 
-const app: Express = express();
+const server: Express = express();
 const port = process.env.PORT;
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use("/notes", noteRoutes);
+server.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
+    res.header(
+      'Access-Control-Allow-Headers',
+      'Origin, X-Requested-With, Content-Type, Accept'
+    );
+    next();
+  });
+server.use(bodyParser.json());
+server.use(bodyParser.urlencoded({ extended: false }));
 
-app.listen(port, () => {
+server.use("/notes", noteRoutes);
+
+server.listen(port, () => {
     console.log(`[server]: Server is running at http://localhost:${port}`);
 });

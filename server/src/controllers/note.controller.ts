@@ -5,6 +5,7 @@ import { PersonNote } from "../types/PersonNote.js";
 export const handleGetNotes = async (req: Request, res: Response): Promise<void> => {
     try {
         const notes = await getNotes();
+        console.log("getting notes");
         res.send(notes);
     } catch (e) {
         console.log(e); // TODO: Replace with logger
