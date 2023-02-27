@@ -5,7 +5,6 @@ import { PersonNote } from "../types/PersonNote.js";
 export const handleGetNotes = async (req: Request, res: Response): Promise<void> => {
     try {
         const notes = await getNotes();
-        console.log("getting notes");
         res.send(notes);
     } catch (e) {
         console.log(e); // TODO: Replace with logger
@@ -36,11 +35,12 @@ export const handleGetNote = async (req: Request, res: Response): Promise<void> 
 
 export const handleCreateNote = async (req: Request, res: Response): Promise<void> => {
     try {
+        console.log(JSON.stringify(req.body));
         const noteToCreate: PersonNote = {
-            givenName: req.body.givenName,
-            familyName: req.body.familyName,
             content: req.body.content,
-            email: req.body.email
+            givenName: req.body.person.givenName,
+            familyName: req.body.person.familyName,
+            email: req.body.person.email
         };
 
         const createdNote = await createNote(noteToCreate);

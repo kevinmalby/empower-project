@@ -22,7 +22,7 @@ export default function Notes() {
                 </Link>
             </div>
             <h1 className="mt-8 text-2xl font-bold">Canvassing Notes</h1>
-            <ul className="mt-3 border border-gray-400 w-full">
+            <ul className="mt-3 border border-gray-400 w-full max-h-[70vh] overflow-auto">
                 {notes.map((note) => (
                     <NoteListItem note={note} />
                 ))}

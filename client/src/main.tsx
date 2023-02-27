@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./routes/root";
 import ErrorPage from "./pages/error";
-import Notes, { loader } from "./routes/notes";
-import CreateNote from "./routes/create-note";
+import Notes, { loader as notesLoader } from "./routes/notes";
+import CreateNote, { action as createNoteAction } from "./routes/create-note";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -16,11 +16,12 @@ const router = createBrowserRouter([
             {
                 path: "notes",
                 element: <Notes />,
-                loader: loader
+                loader: notesLoader
             },
             {
                 path: "notes/new",
-                element: <CreateNote />
+                element: <CreateNote />,
+                action: createNoteAction
             }
         ]
     }
