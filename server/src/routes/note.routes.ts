@@ -1,9 +1,12 @@
-import { Router, Request, Response } from "express";
+import { Router } from "express";
+import { handleGetNote, handleGetNotes, handleCreateNote } from "../controllers/note.controller.js";
 
 const router = Router();
 
-router.get("/", async (req: Request, res: Response) => {
-    res.send(["Notes"]);
-});
+router.get("/", handleGetNotes);
+
+router.get("/:id", handleGetNote);
+
+router.post("/", handleCreateNote);
 
 export default router;
