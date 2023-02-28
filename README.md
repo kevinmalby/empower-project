@@ -27,7 +27,7 @@ Kevin Malby interview project for Empower
 
 1. In the `server` directory, run the command `npm run dev` to start the server
 2. In the `client` directory, run the command `npm run dev` to start the React web app
-3. In the browser, navigate to `http://localhost:5173/notes` (unfortunately, the root route does not redirecting to this route)
+3. In the browser, navigate to `http://localhost:5173/notes` (unfortunately, the root route does not redirect to this route)
 
 # Implementation Notes
 
